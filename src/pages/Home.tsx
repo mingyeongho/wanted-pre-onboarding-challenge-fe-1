@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  const usersToken = localStorage.getItem("usersToken");
 
   useEffect(() => {
+    const usersToken = localStorage.getItem("usersToken");
     !usersToken && navigate("/auth");
   }, []);
 

@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/components/_signup.module.scss";
-import { LOGIN, SIGNUP } from "../utils/constant";
+import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
 
 const SignUpForm = () => {
   return (
     <form className={styles.signup_form}>
       <h2>{SIGNUP}</h2>
       <div className={styles.email_wrapper}>
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" />
+        <label htmlFor="email">{EMAIL}</label>
+        <input type="text" id="email" placeholder="example@naver.com" />
       </div>
       <div className={styles.pw_wrapper}>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" />
+        <label htmlFor="password">{PASSWORD}</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="8자 이상 입력해주세요."
+        />
       </div>
       <div className={styles.btn_wrapper}>
         <Link to="/auth">
