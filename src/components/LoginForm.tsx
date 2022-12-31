@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_loginForm.module.scss";
