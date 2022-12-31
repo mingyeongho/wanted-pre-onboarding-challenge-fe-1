@@ -1,9 +1,13 @@
-import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/pages/_auth.module.scss";
+import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
+import submit from "../utils/apis/post/submit";
 import valid from "../utils/function/valid";
+import { AuthProps } from "../utils/interface";
 
-const Auth = () => {
+const Auth = ({ usersToken, setUsersToken }: AuthProps) => {
+  const navigate = useNavigate();
   const [loginInputs, setLoginInputs] = useState({
     loginEmail: "",
     loginPw: "",
@@ -12,12 +16,11 @@ const Auth = () => {
     signupEmail: "",
     signupPw: "",
   });
-  const { loginEmail, loginPw } = loginInputs;
   const { signupEmail, signupPw } = signupInputs;
+  const { loginEmail, loginPw } = loginInputs;
 
   const onChagne = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-
     if (name === "loginEmail" || name === "loginPw") {
       setLoginInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     } else {
@@ -25,37 +28,22 @@ const Auth = () => {
     }
   };
 
-  const onSubmit = async (
-    e: FormEvent,
-    type: "login" | "signup",
-    email: string,
-    password: string
-  ) => {
-    e.preventDefault();
-    let APIURL = import.meta.env.VITE_API_URL;
-    switch (type) {
-      case "login":
-        APIURL += "/users/login";
-        await axios.post(APIURL, {
-          email,
-          password,
-        });
-        break;
-      case "signup":
-        APIURL += "/users/create";
-        await axios.post(APIURL, {
-          email,
-          password,
-        });
-        break;
+  useEffect(() => {
+    if (usersToken) {
+      alert("이미 로그인 되어있습니다.");
+      navigate("/");
     }
-  };
+  }, []);
 
   return (
     <main className={styles.auth}>
-      <form onSubmit={(e) => onSubmit(e, "login", loginEmail, loginPw)}>
-        <h1>로그인</h1>
-        <label htmlFor="loginEmail">Email</label>
+      <form
+        onSubmit={(e) =>
+          submit(e, "login", loginEmail, loginPw, navigate, setUsersToken)
+        }
+      >
+        <h1>{LOGIN}</h1>
+        <label htmlFor="loginEmail">{EMAIL}</label>
         <input
           type="text"
           name="loginEmail"
@@ -63,7 +51,7 @@ const Auth = () => {
           value={loginEmail}
           onChange={onChagne}
         />
-        <label htmlFor="loginPw">Password</label>
+        <label htmlFor="loginPw">{PASSWORD}</label>
         <input
           type="password"
           name="loginPw"
@@ -76,13 +64,17 @@ const Auth = () => {
           type="submit"
           disabled={!valid({ email: loginEmail, pw: loginPw })}
         >
-          로그인
+          {LOGIN}
         </button>
       </form>
 
-      <form onSubmit={(e) => onSubmit(e, "signup", signupEmail, signupPw)}>
-        <h1>회원가입</h1>
-        <label htmlFor="signupEmail">Email</label>
+      <form
+        onSubmit={(e) =>
+          submit(e, "signup", signupEmail, signupPw, navigate, setUsersToken)
+        }
+      >
+        <h1>{SIGNUP}</h1>
+        <label htmlFor="signupEmail">{EMAIL}</label>
         <input
           type="text"
           name="signupEmail"
@@ -90,7 +82,7 @@ const Auth = () => {
           value={signupEmail}
           onChange={onChagne}
         />
-        <label htmlFor="signupPw">Password</label>
+        <label htmlFor="signupPw">{PASSWORD}</label>
         <input
           type="password"
           name="signupPw"
@@ -103,7 +95,7 @@ const Auth = () => {
           type="submit"
           disabled={!valid({ email: signupEmail, pw: signupPw })}
         >
-          로그인
+          {SIGNUP}
         </button>
       </form>
     </main>
