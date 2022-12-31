@@ -1,21 +1,25 @@
 import axios from "axios";
-import { FormEvent } from "react";
-
 import { SIGNUP_URL } from "../../constant";
+import { SignType } from "../../type";
 
-const signup = async (e: FormEvent, email: string, password: string) => {
-  e.preventDefault();
+const signup = async ({ inputs }: SignType) => {
+  const API_URL = import.meta.env.VITE_API_URL + SIGNUP_URL;
+  const { email, password } = inputs;
 
-  let API_URL = import.meta.env.VITE_API_URL + SIGNUP_URL;
-  try {
-    await axios
-      .post(API_URL, {
-        email,
-        password,
-      })
-      .then(() => alert("성공적으로 회원가입되었습니다."));
-  } catch (e) {
-    console.error(e);
+  if (email.includes("@") && email.includes(".") && password.length >= 8) {
+    try {
+      const signupRes = await axios.post(API_URL, inputs);
+      if (signupRes.status === 200) {
+        alert("회원가입되었습니다.");
+      }
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  } else {
+    console.log("다시 입력해주세요.");
+    return false;
   }
 };
 

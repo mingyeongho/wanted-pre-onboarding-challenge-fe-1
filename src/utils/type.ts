@@ -4,3 +4,10 @@ export type ValidType = {
   email: string;
   pw: string;
 };
+
+export type SignType = {
+  inputs: {
+    email: string;
+    password: string;
+  };
+};
