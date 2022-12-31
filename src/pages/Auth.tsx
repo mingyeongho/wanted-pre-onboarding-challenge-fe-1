@@ -2,9 +2,10 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/pages/_auth.module.scss";
 import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
-import submit from "../utils/apis/post/submit";
 import valid from "../utils/function/valid";
 import { AuthProps } from "../utils/interface";
+import login from "../utils/apis/post/login";
+import signup from "../utils/apis/post/signup";
 
 const Auth = ({ usersToken, setUsersToken }: AuthProps) => {
   const navigate = useNavigate();
@@ -38,9 +39,7 @@ const Auth = ({ usersToken, setUsersToken }: AuthProps) => {
   return (
     <main className={styles.auth}>
       <form
-        onSubmit={(e) =>
-          submit(e, "login", loginEmail, loginPw, navigate, setUsersToken)
-        }
+        onSubmit={(e) => login(e, loginEmail, loginPw, navigate, setUsersToken)}
       >
         <h1>{LOGIN}</h1>
         <label htmlFor="loginEmail">{EMAIL}</label>
@@ -68,11 +67,7 @@ const Auth = ({ usersToken, setUsersToken }: AuthProps) => {
         </button>
       </form>
 
-      <form
-        onSubmit={(e) =>
-          submit(e, "signup", signupEmail, signupPw, navigate, setUsersToken)
-        }
-      >
+      <form onSubmit={(e) => signup(e, signupEmail, signupPw)}>
         <h1>{SIGNUP}</h1>
         <label htmlFor="signupEmail">{EMAIL}</label>
         <input
