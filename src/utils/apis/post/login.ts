@@ -1,9 +1,9 @@
 import axios from "axios";
-import { LOGIN_URL } from "../../constant";
+import { POST_LOGIN_URL } from "../../constant";
 import { SignType } from "../../type";
 
 const login = async ({ inputs }: SignType) => {
-  const API_URL = import.meta.env.VITE_API_URL + LOGIN_URL;
+  const API_URL = import.meta.env.VITE_API_URL + POST_LOGIN_URL;
   const { email, password } = inputs;
   if (email.includes("@") && email.includes(".") && password.length >= 8) {
     try {
