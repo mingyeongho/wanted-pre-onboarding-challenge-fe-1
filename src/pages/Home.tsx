@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Todo from "../components/Todo";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <main style={{ flexDirection: "column", gap: 10 }}>
       <button onClick={onClickLogoutBtn}>로그아웃</button>
+      <Todo />
     </main>
   );
 };
