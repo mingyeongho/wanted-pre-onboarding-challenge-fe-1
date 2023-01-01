@@ -19,3 +19,12 @@ export type TodoType = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type TodoFocusType = {
+  title: string;
+  content: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  isEdit: boolean;
+};

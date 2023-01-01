@@ -8,6 +8,8 @@ export const POST_SIGNUP_URL = "/users/create";
 export const GET_TODOS_URL = "/todos";
 export const POST_TODOS_URL = "/todos";
 export const GET_TODO_BY_ID_URL = (id: string) => "/todos/" + id;
+export const DELETE_TODO_URL = (id: string) => "/todos/" + id;
+export const UPDATE_TODO_URL = (id: string) => "/todos/" + id;
 
 export const EMAIL = "Email";
 export const PASSWORD = "Password";
