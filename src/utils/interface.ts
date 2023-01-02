@@ -1,5 +1,5 @@
 import React, { SetStateAction } from "react";
-import { Nullable, TodoFocusType } from "./type";
+import { Nullable, TodoFocusType, TodoType } from "./type";
 
 export interface TodoFormProps {
   HeaderConfig: {
@@ -15,8 +15,8 @@ export interface TodoListProps {
       Authorization: Nullable<string>;
     };
   };
+  searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
-  setFocusTodo: React.Dispatch<SetStateAction<TodoFocusType | undefined>>;
 }
 
 export interface TodoDetailProps {
@@ -25,5 +25,16 @@ export interface TodoDetailProps {
       Authorization: Nullable<string>;
     };
   };
-  focusTodo: Nullable<TodoFocusType>;
+  searchParams: URLSearchParams;
+}
+
+export interface TodoItemProps {
+  HeaderConfig: {
+    headers: {
+      Authorization: Nullable<string>;
+    };
+  };
+  todo: TodoType;
+  setSearchParams: SetURLSearchParams;
+  searchParams: URLSearchParams;
 }
