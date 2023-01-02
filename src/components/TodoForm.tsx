@@ -16,8 +16,8 @@ const TodoForm = ({ HeaderConfig }: TodoFormProps) => {
   };
 
   const onCreateTodo = async (e: FormEvent) => {
-    const CREATE_TODO_API_URL = import.meta.env.VITE_API_URL + POST_TODOS_URL;
     e.preventDefault();
+    const CREATE_TODO_API_URL = import.meta.env.VITE_API_URL + POST_TODOS_URL;
 
     if (inputs.title.length > 0 && inputs.content.length > 0) {
       await axios

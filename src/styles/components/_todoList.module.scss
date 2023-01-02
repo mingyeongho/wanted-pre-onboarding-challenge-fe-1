@@ -1,0 +1,51 @@
+@import "../variable.scss";
+
+.todo_list {
+  box-shadow: $box_shadow;
+  padding: $box_padding;
+  border-radius: $border_radius;
+  width: $box_width;
+  display: flex;
+  flex-direction: column;
+  gap: $box_gap;
+
+  & > .todo_items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & > .todo_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: 0.3s;
+      &:hover {
+        background-color: #ddd;
+      }
+
+      & > .title {
+        flex: 1;
+        padding: 12px;
+        cursor: pointer;
+      }
+
+      & > .btn_wrapper {
+        display: flex;
+        gap: 10px;
+        & > button {
+          background-color: inherit;
+          border: none;
+          outline: none;
+          padding: 8px;
+          border-radius: 8px;
+          &:hover {
+            cursor: pointer;
+            background-color: #2979ff;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
