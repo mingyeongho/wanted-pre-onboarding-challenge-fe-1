@@ -1,38 +1,32 @@
 import axios from "axios";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styles from "../styles/components/_todo.module.scss";
 import {
   DELETE_TODO_URL,
   GET_TODOS_URL,
   GET_TODO_BY_ID_URL,
-  POST_TODOS_URL,
   UPDATE_TODO_URL,
 } from "../utils/constant";
 import { TodoFocusType, TodoType } from "../utils/type";
+import TodoForm from "./TodoForm";
 
 const Todo = () => {
   const usersToken = localStorage.getItem("usersToken");
-  const [inputs, setInputs] = useState({
-    title: "",
-    content: "",
-  });
-  const [todos, setTodos] = useState<TodoType[]>([] as TodoType[]);
-  const [focusTodo, setFocusTodo] = useState<TodoFocusType>();
-  const [searchParams, setSearchParams] = useSearchParams();
   const HeaderConfig = {
     headers: {
       Authorization: usersToken,
     },
   };
+  const [todos, setTodos] = useState<TodoType[]>([] as TodoType[]);
+  const [focusTodo, setFocusTodo] = useState<TodoFocusType>();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const onChangeForm = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     type: "login" | "edit"
   ) => {
     switch (type) {
-      case "login":
-        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-        break;
       case "edit":
         setFocusTodo((prev) => {
           if (prev) {
@@ -40,18 +34,6 @@ const Todo = () => {
           }
         });
         break;
-    }
-  };
-
-  const onCreateTodo = async (e: FormEvent) => {
-    const CREATE_TODO_API_URL = import.meta.env.VITE_API_URL + POST_TODOS_URL;
-    e.preventDefault();
-
-    if (inputs.title.length > 0 && inputs.content.length > 0) {
-      await axios
-        .post(CREATE_TODO_API_URL, inputs, HeaderConfig)
-        .catch((e) => console.error(e));
-      setInputs({ title: "", content: "" });
     }
   };
 
@@ -121,27 +103,7 @@ const Todo = () => {
 
   return (
     <div className={styles.todo}>
-      <form
-        className={`${styles.wrapper} ${styles.todo_form}`}
-        onSubmit={onCreateTodo}
-      >
-        <h3>Todo Form</h3>
-        <input
-          type="text"
-          placeholder="Todo Title"
-          name="title"
-          value={inputs.title}
-          onChange={(e) => onChangeForm(e, "login")}
-        />
-        <textarea
-          rows={6}
-          placeholder="Todo Content"
-          name="content"
-          value={inputs.content}
-          onChange={(e) => onChangeForm(e, "login")}
-        ></textarea>
-        <button type="submit">등록</button>
-      </form>
+      <TodoForm HeaderConfig={HeaderConfig} />
       <div className={`${styles.wrapper} ${styles.todo_list}`}>
         <h3>Todo List</h3>
         <div className={styles.todo_items}>

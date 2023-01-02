@@ -1,0 +1,40 @@
+@import "../variable.scss";
+
+.todo_form {
+  box-shadow: $box_shadow;
+  padding: $box_padding;
+  border-radius: $border_radius;
+  width: $box_width;
+  display: flex;
+  flex-direction: column;
+  gap: $box_gap;
+
+  & > input,
+  & > textarea {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid $input_border_color;
+    outline: none;
+    &:focus {
+      border-color: $accent_color;
+    }
+  }
+
+  & > textarea {
+    resize: none;
+  }
+
+  & > button {
+    padding: 8px;
+    background-color: $accent_color;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
