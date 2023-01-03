@@ -28,3 +28,19 @@ export type TodoFocusType = {
   updatedAt: string;
   isEdit: boolean;
 };
+
+export type HeadersConfigtype = {
+  headers: {
+    Authorization: string;
+  };
+};
+
+export type TodoPayloadType = {
+  title: string;
+  content: string;
+};
+
+export type AuthPayloadType = {
+  email: string;
+  password: string;
+};
