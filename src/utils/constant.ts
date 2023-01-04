@@ -1,18 +1,4 @@
 export const regexValid = /@./;
-export const LOGIN = "로그인";
-export const SIGNUP = "회원가입";
-export const LOGOUT = "로그아웃";
-
-export const POST_LOGIN_URL = "/users/login";
-export const POST_SIGNUP_URL = "/users/create";
-export const GET_TODOS_URL = "/todos";
-export const POST_TODOS_URL = "/todos";
-export const GET_TODO_BY_ID_URL = (id: string) => "/todos/" + id;
-export const DELETE_TODO_URL = (id: string) => "/todos/" + id;
-export const UPDATE_TODO_URL = (id: string) => "/todos/" + id;
-
-export const EMAIL = "Email";
-export const PASSWORD = "Password";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 export const API_URLS = {
@@ -30,4 +16,8 @@ export const CONSTANT = {
   signup: "회원가입",
   email: "Email",
   password: "Password",
+  logout: "로그아웃",
+  remove: "삭제",
+  cancel: "취소",
+  edit: "수정",
 };

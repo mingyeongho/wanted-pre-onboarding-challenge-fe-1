@@ -2,8 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_signup.module.scss";
 import apis from "../utils/apis/apis";
-import signup from "../utils/apis/post/signup";
-import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
+import { CONSTANT } from "../utils/constant";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ const SignUpForm = () => {
   return (
     <form className={styles.signup_form} onSubmit={onSubmit}>
       <div className={styles.email_wrapper}>
-        <label htmlFor="email">{EMAIL}</label>
+        <label htmlFor="email">{CONSTANT.email}</label>
         <input
           type="text"
           id="email"
@@ -36,7 +35,7 @@ const SignUpForm = () => {
         />
       </div>
       <div className={styles.pw_wrapper}>
-        <label htmlFor="password">{PASSWORD}</label>
+        <label htmlFor="password">{CONSTANT.password}</label>
         <input
           type="password"
           id="password"
@@ -49,11 +48,11 @@ const SignUpForm = () => {
       <div className={styles.btn_wrapper}>
         <Link to="/auth">
           <button type="button" className={styles.link}>
-            {LOGIN}
+            {CONSTANT.login}
           </button>
         </Link>
         <button type="submit" className={styles.submit}>
-          {SIGNUP}
+          {CONSTANT.signup}
         </button>
       </div>
     </form>

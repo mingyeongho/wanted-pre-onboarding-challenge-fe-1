@@ -1,5 +1,4 @@
-import React, { SetStateAction } from "react";
-import { Nullable, TodoFocusType, TodoType } from "./type";
+import { HeadersConfigtype, TodoType } from "./type";
 
 export interface BoxProps {
   title: string;
@@ -7,38 +6,22 @@ export interface BoxProps {
 }
 
 export interface TodoFormProps {
-  HeaderConfig: {
-    headers: {
-      Authorization: Nullable<string>;
-    };
-  };
+  HeaderConfig: HeadersConfigtype;
 }
 
 export interface TodoListProps {
-  HeaderConfig: {
-    headers: {
-      Authorization: Nullable<string>;
-    };
-  };
+  HeaderConfig: HeadersConfigtype;
   searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
 }
 
 export interface TodoDetailProps {
-  HeaderConfig: {
-    headers: {
-      Authorization: Nullable<string>;
-    };
-  };
+  HeaderConfig: HeadersConfigtype;
   searchParams: URLSearchParams;
 }
 
 export interface TodoItemProps {
-  HeaderConfig: {
-    headers: {
-      Authorization: Nullable<string>;
-    };
-  };
+  HeaderConfig: HeadersConfigtype;
   todo: TodoType;
   setSearchParams: SetURLSearchParams;
   searchParams: URLSearchParams;

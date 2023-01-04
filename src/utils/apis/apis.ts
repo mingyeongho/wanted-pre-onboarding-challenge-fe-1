@@ -1,4 +1,5 @@
 import { AuthPayloadType, HeadersConfigtype, TodoPayloadType } from "../type";
+import delete_todo from "./delete/delete_todo";
 import get_todos from "./get/get_todos";
 import get_todo_by_id from "./get/get_todo_by_id";
 import post_create_todo from "./post/post_create_todo";
@@ -20,6 +21,8 @@ const apis = {
     payload: TodoPayloadType,
     id: string
   ) => await put_update_todo(HeadersConfig, payload, id),
+  delete_todo: async (HeadersConfig: HeadersConfigtype, id: string) =>
+    await delete_todo(HeadersConfig, id),
   post_login: async (payload: AuthPayloadType) => await post_login(payload),
   post_signup: async (payload: AuthPayloadType) => await post_signup(payload),
 };

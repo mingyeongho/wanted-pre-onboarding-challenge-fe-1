@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "../styles/components/_todoList.module.scss";
-import { GET_TODOS_URL } from "../utils/constant";
+import apis from "../utils/apis/apis";
 import { TodoListProps } from "../utils/interface";
 import { TodoType } from "../utils/type";
 import TodoItem from "./TodoItem";
@@ -14,17 +14,15 @@ const TodoList = ({
   const [todos, setTodos] = useState<TodoType[]>([] as TodoType[]);
 
   useEffect(() => {
-    const GET_TODOS_API_URL = import.meta.env.VITE_API_URL + GET_TODOS_URL;
-
-    (async () => {
-      const res = await axios.get(GET_TODOS_API_URL, HeaderConfig);
-      setTodos(res.data.data);
-    })();
+    const fetchTodoList = async () => {
+      const getTodoList = await apis.get_todos(HeaderConfig);
+      setTodos(getTodoList.data);
+    };
+    fetchTodoList();
   }, []);
 
   return (
     <div className={`${styles.wrapper} ${styles.todo_list}`}>
-      <h3>Todo List</h3>
       <div className={styles.todo_items}>
         {todos.length > 0 ? (
           todos.map((todo, idx) => (

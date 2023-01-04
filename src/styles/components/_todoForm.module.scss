@@ -1,13 +1,9 @@
 @import "../variable.scss";
 
 .todo_form {
-  box-shadow: $box_shadow;
-  padding: $box_padding;
-  border-radius: $border_radius;
-  width: $box_width;
   display: flex;
   flex-direction: column;
-  gap: $box_gap;
+  gap: 10px;
 
   & > input,
   & > textarea {

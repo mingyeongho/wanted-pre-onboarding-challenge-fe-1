@@ -1,10 +1,11 @@
-import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/components/_todoForm.module.scss";
-import { POST_TODOS_URL } from "../utils/constant";
+import apis from "../utils/apis/apis";
 import { TodoFormProps } from "../utils/interface";
 
 const TodoForm = ({ HeaderConfig }: TodoFormProps) => {
+  const naviate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
     content: "",
@@ -17,18 +18,13 @@ const TodoForm = ({ HeaderConfig }: TodoFormProps) => {
 
   const onCreateTodo = async (e: FormEvent) => {
     e.preventDefault();
-    const CREATE_TODO_API_URL = import.meta.env.VITE_API_URL + POST_TODOS_URL;
-
-    if (inputs.title.length > 0 && inputs.content.length > 0) {
-      await axios
-        .post(CREATE_TODO_API_URL, inputs, HeaderConfig)
-        .catch((e) => console.error(e));
-      setInputs({ title: "", content: "" });
+    const isCreateTodo = await apis.post_create_todo(HeaderConfig, inputs);
+    if (isCreateTodo) {
+      naviate(0);
     }
   };
   return (
     <form className={styles.todo_form} onSubmit={onCreateTodo}>
-      <h3>Todo Form</h3>
       <input
         type="text"
         placeholder="Todo Title"

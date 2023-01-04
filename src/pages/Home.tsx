@@ -7,7 +7,7 @@ const Home = () => {
 
   const onClickLogoutBtn = () => {
     localStorage.removeItem("usersToken");
-    history.go(0);
+    navigate("/auth");
   };
 
   useEffect(() => {

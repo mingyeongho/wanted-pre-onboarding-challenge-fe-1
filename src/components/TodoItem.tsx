@@ -1,6 +1,7 @@
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/components/_todoItem.module.scss";
-import { DELETE_TODO_URL } from "../utils/constant";
+import apis from "../utils/apis/apis";
+import { CONSTANT } from "../utils/constant";
 import { TodoItemProps } from "../utils/interface";
 
 const TodoItem = ({
@@ -10,6 +11,7 @@ const TodoItem = ({
   searchParams,
 }: TodoItemProps) => {
   const { title, id } = todo;
+  const navigate = useNavigate();
 
   /**
    * currId가 있으면 searchParams를 지워서 TodoDetail이 안보이게
@@ -24,19 +26,19 @@ const TodoItem = ({
     }
   };
 
-  const onClickTodoItemRemove = async (id: string) => {
-    const DELETE_API_URL = import.meta.env.VITE_API_URL + DELETE_TODO_URL(id);
-    await axios
-      .delete(DELETE_API_URL, HeaderConfig)
-      .catch((e) => console.error(e));
+  const onClickRemoveTodo = async () => {
+    await apis.delete_todo(HeaderConfig, id);
+    navigate("/");
+    navigate(0);
   };
+
   return (
     <div className={styles.todo_item}>
       <span className={styles.title} onClick={onClickTodoItem}>
         {title}
       </span>
       <div className={styles.btn_wrapper}>
-        <button onClick={() => onClickTodoItemRemove(id)}>삭제</button>
+        <button onClick={onClickRemoveTodo}>{CONSTANT.remove}</button>
       </div>
     </div>
   );

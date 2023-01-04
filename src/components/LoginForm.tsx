@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_loginForm.module.scss";
 import apis from "../utils/apis/apis";
-import login from "../utils/apis/post/login";
 import { CONSTANT } from "../utils/constant";
 
 const LoginForm = () => {
@@ -16,11 +15,10 @@ const LoginForm = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    apis.post_login(inputs);
-    // const isLogin = await login({ inputs });
-    // if (isLogin) {
-    //   navigate("/");
-    // }
+    const isLogin = await apis.post_login(inputs);
+    if (isLogin) {
+      navigate("/");
+    }
   };
 
   return (
