@@ -1,8 +1,9 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_loginForm.module.scss";
+import apis from "../utils/apis/apis";
 import login from "../utils/apis/post/login";
-import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
+import { CONSTANT } from "../utils/constant";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -15,25 +16,17 @@ const LoginForm = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const isLogin = await login({ inputs });
-    if (isLogin) {
-      navigate("/");
-    }
+    apis.post_login(inputs);
+    // const isLogin = await login({ inputs });
+    // if (isLogin) {
+    //   navigate("/");
+    // }
   };
-
-  useEffect(() => {
-    const usersToken = localStorage.getItem("usersToken");
-    if (usersToken) {
-      alert("이미 로그인하셨습니다.");
-      navigate("/");
-    }
-  }, []);
 
   return (
     <form className={styles.login_form} onSubmit={onSubmit}>
-      <h2>{LOGIN}</h2>
       <div className={styles.email_wrapper}>
-        <label htmlFor="email">{EMAIL}</label>
+        <label htmlFor="email">{CONSTANT.email}</label>
         <input
           type="text"
           id="email"
@@ -44,7 +37,7 @@ const LoginForm = () => {
         />
       </div>
       <div className={styles.pw_wrapper}>
-        <label htmlFor="password">{PASSWORD}</label>
+        <label htmlFor="password">{CONSTANT.password}</label>
         <input
           type="password"
           id="password"
@@ -56,11 +49,11 @@ const LoginForm = () => {
       </div>
       <div className={styles.btn_wrapper}>
         <button type="submit" className={styles.submit}>
-          {LOGIN}
+          {CONSTANT.login}
         </button>
         <Link to="signup">
           <button type="button" className={styles.link}>
-            {SIGNUP}
+            {CONSTANT.signup}
           </button>
         </Link>
       </div>

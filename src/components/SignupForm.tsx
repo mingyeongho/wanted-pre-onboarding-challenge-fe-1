@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_signup.module.scss";
+import apis from "../utils/apis/apis";
 import signup from "../utils/apis/post/signup";
 import { EMAIL, LOGIN, PASSWORD, SIGNUP } from "../utils/constant";
 
@@ -15,7 +16,7 @@ const SignUpForm = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const isSignup = await signup({ inputs });
+    const isSignup = await apis.post_signup(inputs);
     if (isSignup) {
       navigate("/auth");
     }
@@ -23,7 +24,6 @@ const SignUpForm = () => {
 
   return (
     <form className={styles.signup_form} onSubmit={onSubmit}>
-      <h2>{SIGNUP}</h2>
       <div className={styles.email_wrapper}>
         <label htmlFor="email">{EMAIL}</label>
         <input

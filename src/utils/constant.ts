@@ -24,3 +24,10 @@ export const API_URLS = {
   POST_LOGIN: BASE_URL + `/users/login`,
   POST_SIGNUP: BASE_URL + `/users/create`,
 };
+
+export const CONSTANT = {
+  login: "로그인",
+  signup: "회원가입",
+  email: "Email",
+  password: "Password",
+};

@@ -1,0 +1,15 @@
+@import "../../variable.scss";
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($box_variable, "gap");
+  box-shadow: map-get($box_variable, "box_shadow");
+  border-radius: map-get($box_variable, "border_radius");
+  padding: map-get($box_variable, "padding");
+  width: map-get($box_variable, "width");
+
+  & > .title {
+    color: map-get($box_variable, "title_color");
+  }
+}

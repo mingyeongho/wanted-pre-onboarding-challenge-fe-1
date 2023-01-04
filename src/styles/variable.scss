@@ -8,3 +8,12 @@ $input_border_color: rgb(187, 187, 187);
 $box_width: 350px;
 $box_padding: 30px;
 $box_gap: 10px;
+
+$box_variable: (
+  "box_shadow": rgba(0, 0, 0, 0.35) 0px 5px 15px,
+  "border_radius": 10px,
+  "padding": 30px,
+  "gap": 10px,
+  "width": 350px,
+  "title_color": #2979ff,
+);

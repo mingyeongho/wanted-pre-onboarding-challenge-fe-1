@@ -1,6 +1,11 @@
 import React, { SetStateAction } from "react";
 import { Nullable, TodoFocusType, TodoType } from "./type";
 
+export interface BoxProps {
+  title: string;
+  children: JSX.Element;
+}
+
 export interface TodoFormProps {
   HeaderConfig: {
     headers: {

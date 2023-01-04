@@ -6,20 +6,21 @@ import post_login from "./post/post_login";
 import post_signup from "./post/post_signup";
 import put_update_todo from "./put/put_update_todo";
 
-const apis = () => {
-  get_todos: (HeadersConfig: HeadersConfigtype) => get_todos(HeadersConfig);
-  get_todo_by_id: (HeadersConfig: HeadersConfigtype, id: string) =>
-    get_todo_by_id(HeadersConfig, id);
-  post_create_todo: (
+const apis = {
+  get_todos: async (HeadersConfig: HeadersConfigtype) =>
+    await get_todos(HeadersConfig),
+  get_todo_by_id: async (HeadersConfig: HeadersConfigtype, id: string) =>
+    await get_todo_by_id(HeadersConfig, id),
+  post_create_todo: async (
     HeadersConfig: HeadersConfigtype,
     payload: TodoPayloadType
-  ) => post_create_todo(HeadersConfig, payload);
-  put_update_todo: (
+  ) => await post_create_todo(HeadersConfig, payload),
+  put_update_todo: async (
     HeadersConfig: HeadersConfigtype,
     payload: TodoPayloadType,
     id: string
-  ) => put_update_todo(HeadersConfig, payload, id);
-  post_login: (payload: AuthPayloadType) => post_login(payload);
-  post_signup: (payload: AuthPayloadType) => post_signup(payload);
+  ) => await put_update_todo(HeadersConfig, payload, id),
+  post_login: async (payload: AuthPayloadType) => await post_login(payload),
+  post_signup: async (payload: AuthPayloadType) => await post_signup(payload),
 };
 export default apis;
