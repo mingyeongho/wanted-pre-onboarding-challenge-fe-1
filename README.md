@@ -1,6 +1,10 @@
 # 프리온보딩 사전과제
 
-### Library
+## 프로젝트 소개
+
+- 회원가입, 로그인, Todo 기능 구현
+
+## Library
 
 - axios
 - react-router-dom
