@@ -10,6 +10,27 @@
 - react-router-dom
 - sass
 
+## 실행 화면
+1. 로그인이 되어있지 않으면 auth 페이지로 이동합니다.
+![image](https://user-images.githubusercontent.com/57670160/210798090-05678a44-b7b3-4edb-a64a-238a25d3928d.png)
+![image](https://user-images.githubusercontent.com/57670160/210801444-476bc1fe-b08e-44ac-9537-5ebd2920579d.png)
+
+2. 회원가입, 로그인 페이지
+![image](https://user-images.githubusercontent.com/57670160/210801366-3a47df2c-9961-4da6-99d5-f1e0dcfa82e1.png)
+![image](https://user-images.githubusercontent.com/57670160/210801636-3b203a1f-b291-4450-a921-cb11e42b1736.png)
+![image](https://user-images.githubusercontent.com/57670160/210801748-5565237c-5ee9-4a31-a416-5cc170f41cc0.png)
+![image](https://user-images.githubusercontent.com/57670160/210801954-13e72eae-cd04-433c-8113-dea5f6e883a6.png)
+![image](https://user-images.githubusercontent.com/57670160/210802151-49c1ade2-e473-4768-bd5a-32787733221f.png)
+![image](https://user-images.githubusercontent.com/57670160/210802263-cfeb5e6e-a06f-4e3d-a508-92ea602598c8.png)
+
+3. Todo List
+![image](https://user-images.githubusercontent.com/57670160/210802403-df86976b-f7e4-4029-80f3-79c972fb4fcd.png)
+![image](https://user-images.githubusercontent.com/57670160/210802631-4e8d74c0-3c1b-45d6-a1fe-1df5456fae01.png)
+![image](https://user-images.githubusercontent.com/57670160/210802700-0f6fd460-d296-4a2f-b04c-45e68ffa7be0.png)
+![image](https://user-images.githubusercontent.com/57670160/210802761-cf014c4d-147c-418d-95f0-e9deeb87877f.png)
+![image](https://user-images.githubusercontent.com/57670160/210802824-d26aec8f-2862-43c0-bc64-addb2cc760ce.png)
+![image](https://user-images.githubusercontent.com/57670160/210802919-e58bd5f9-ff95-47e7-88b4-cecb5208418a.png)
+
 ## 클라이언트 구현 과제
 
 1. 로그인 / 회원가입
