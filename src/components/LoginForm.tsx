@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/components/_loginForm.module.scss";
 import apis from "../utils/apis/apis";
 import { CONSTANT } from "../utils/constant";
+import valid from "../utils/function/valid";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -46,7 +47,11 @@ const LoginForm = () => {
         />
       </div>
       <div className={styles.btn_wrapper}>
-        <button type="submit" className={styles.submit}>
+        <button
+          type="submit"
+          className={styles.submit}
+          disabled={!valid({ email, pw: password })}
+        >
           {CONSTANT.login}
         </button>
         <Link to="signup">

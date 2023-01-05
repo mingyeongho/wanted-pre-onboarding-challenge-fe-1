@@ -13,7 +13,10 @@ const Home = () => {
   useEffect(() => {
     // 홈에 접속 시 로그인이 되어 있으면 바로 홈에 접속하고 로그인이 되어있지 않으면 /auth로 이동
     const usersToken = localStorage.getItem("usersToken");
-    !usersToken && navigate("/auth");
+    if (!usersToken) {
+      alert("로그인을 먼저 하셔야 합니다.");
+      navigate("/auth");
+    }
   }, []);
 
   return (

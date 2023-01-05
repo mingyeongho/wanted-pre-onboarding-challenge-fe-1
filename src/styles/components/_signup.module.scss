@@ -41,6 +41,11 @@
       color: white;
       background-color: #2979ff;
       cursor: pointer;
+
+      &:disabled {
+        background-color: #ddd;
+        cursor: no-drop;
+      }
     }
     .link {
       background-color: inherit;
