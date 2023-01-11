@@ -1,7 +1,7 @@
 import { HeadersConfigtype, TodoType } from "./type";
 
-export interface BoxProps {
-  title: string;
+export interface ShadowBoxProps {
+  subject: string;
   children: JSX.Element;
 }
 

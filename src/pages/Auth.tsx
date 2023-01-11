@@ -1,13 +1,12 @@
 import LoginForm from "../components/LoginForm";
-import Box from "../components/reusable/Box";
-import { CONSTANT } from "../utils/constant";
+import ShadowBox from "../components/reusable/ShadowBox";
 
 const Auth = () => {
   return (
     <main>
-      <Box title={CONSTANT.login}>
+      <ShadowBox subject="Login">
         <LoginForm />
-      </Box>
+      </ShadowBox>
     </main>
   );
 };

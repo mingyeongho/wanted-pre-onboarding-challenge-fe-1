@@ -1,19 +1,15 @@
-$accent_color: #2979ff;
-$box_shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-  rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-  rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-$border_radius: 10px;
 $label_color: rgb(94, 94, 94);
 $input_border_color: rgb(187, 187, 187);
-$box_width: 350px;
-$box_padding: 30px;
-$box_gap: 10px;
 
-$box_variable: (
+$common_variable: (
+  "accent_color": #2979ff,
+);
+
+$shadow_box_variable: (
   "box_shadow": rgba(0, 0, 0, 0.35) 0px 5px 15px,
   "border_radius": 10px,
   "padding": 30px,
   "gap": 10px,
   "width": 350px,
-  "title_color": #2979ff,
+  "subject_color": map-get($common_variable, "accent_color"),
 );

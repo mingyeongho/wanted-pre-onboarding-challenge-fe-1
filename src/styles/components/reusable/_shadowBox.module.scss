@@ -1,0 +1,15 @@
+@import "../../variable.scss";
+
+.shadow_box {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($shadow_box_variable, "gap");
+  box-shadow: map-get($shadow_box_variable, "box_shadow");
+  border-radius: map-get($shadow_box_variable, "border_radius");
+  padding: map-get($shadow_box_variable, "padding");
+  width: map-get($shadow_box_variable, "width");
+
+  & > .subject {
+    color: map-get($shadow_box_variable, "subject_color");
+  }
+}

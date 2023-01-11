@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "../styles/components/_todo.module.scss";
 import { HeadersConfigtype } from "../utils/type";
-import Box from "./reusable/Box";
+import ShadowBox from "./reusable/ShadowBox";
 import TodoDetail from "./TodoDetail";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -19,22 +19,22 @@ const Todo = () => {
     <div className={styles.todo}>
       {usersToken && (
         <>
-          <Box title="Todo Form">
+          <ShadowBox subject="Todo Form">
             <TodoForm HeaderConfig={HeaderConfig} />
-          </Box>
-          <Box title="Todo List">
+          </ShadowBox>
+          <ShadowBox subject="Todo List">
             <TodoList
               HeaderConfig={HeaderConfig}
               setSearchParams={setSearchParams}
               searchParams={searchParams}
             />
-          </Box>
-          <Box title="Todo Detail">
+          </ShadowBox>
+          <ShadowBox subject="Todo Detail">
             <TodoDetail
               HeaderConfig={HeaderConfig}
               searchParams={searchParams}
             />
-          </Box>
+          </ShadowBox>
         </>
       )}
     </div>
