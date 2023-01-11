@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "../styles/components/_todo.module.scss";
-import { HeadersConfigtype } from "../utils/type";
-import ShadowBox from "./reusable/ShadowBox";
+import { HeadersConfigtype } from "../../utils/type";
+import ShadowBox from "../reusable/ShadowBox";
 import TodoDetail from "./TodoDetail";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";

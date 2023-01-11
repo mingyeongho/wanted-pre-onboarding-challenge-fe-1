@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/components/_todoItem.module.scss";
-import apis from "../utils/apis/apis";
-import { CONSTANT } from "../utils/constant";
-import { TodoItemProps } from "../utils/interface";
+import apis from "../../utils/apis/apis";
+import { CONSTANT } from "../../utils/constant";
+import { TodoItemProps } from "../../utils/interface";
 
 const TodoItem = ({
   HeaderConfig,

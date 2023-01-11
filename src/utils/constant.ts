@@ -1,6 +1,7 @@
 export const regexValid = /@./;
 
 const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const API_URLS = {
   GET_TODOS: BASE_URL + `/todos`,
   GET_TODO_BY_ID: (id: string) => BASE_URL + `/todos/${id}`,
@@ -20,4 +21,5 @@ export const CONSTANT = {
   remove: "삭제",
   cancel: "취소",
   edit: "수정",
+  usersToken: "usersToken",
 };

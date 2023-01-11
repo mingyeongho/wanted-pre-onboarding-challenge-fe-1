@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "../styles/components/_todoList.module.scss";
-import apis from "../utils/apis/apis";
-import { TodoListProps } from "../utils/interface";
-import { TodoType } from "../utils/type";
+import apis from "../../utils/apis/apis";
+import { TodoListProps } from "../../utils/interface";
+import { TodoType } from "../../utils/type";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({

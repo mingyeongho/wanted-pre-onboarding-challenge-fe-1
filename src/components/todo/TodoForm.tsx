@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/components/_todoForm.module.scss";
-import apis from "../utils/apis/apis";
-import { TodoFormProps } from "../utils/interface";
+import apis from "../../utils/apis/apis";
+import { TodoFormProps } from "../../utils/interface";
 
 const TodoForm = ({ HeaderConfig }: TodoFormProps) => {
   const naviate = useNavigate();

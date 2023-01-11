@@ -1,0 +1,77 @@
+@import "../../variable.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > .input_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 4px;
+
+    & > label {
+      font-size: map-get($auth_form_variable, "label_font_size");
+      font-weight: map-get($auth_form_variable, "label_font_weight");
+      color: map-get($auth_form_variable, "label_color");
+    }
+
+    & > input {
+      width: 100%;
+      padding: map-get($auth_form_variable, "input_padding");
+      border: map-get($auth_form_variable, "input_border");
+      border-radius: 8px;
+      letter-spacing: 1px;
+      transition: 0.3s all linear;
+      outline: map-get($auth_form_variable, "input_outline");
+
+      &.match {
+        border-color: rgb(0, 149, 0);
+      }
+
+      &.not_match {
+        border-color: red;
+      }
+    }
+
+    & > .valid_text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.875rem;
+      color: red;
+    }
+  }
+
+  & > .btn_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > button[type="submit"] {
+      background-color: map-get($auth_form_variable, "submit_bg_color");
+      color: map-get($auth_form_variable, "submit_color");
+      padding: map-get($auth_form_variable, "submit_padding");
+      border: none;
+      border-radius: 8px;
+      font-size: 1.125rem;
+      transition: 0.3s all;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:disabled {
+        background-color: #ddd;
+        cursor: no-drop;
+      }
+    }
+    & > a {
+      color: map-get($common_variable, "accent_color");
+      font-weight: 600;
+    }
+  }
+}

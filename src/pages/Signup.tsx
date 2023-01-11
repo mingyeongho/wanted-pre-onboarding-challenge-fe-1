@@ -1,5 +1,5 @@
 import ShadowBox from "../components/reusable/ShadowBox";
-import SignUpForm from "../components/SignupForm";
+import SignUpForm from "../components/auth/SignupForm";
 import { CONSTANT } from "../utils/constant";
 
 const Signup = () => {

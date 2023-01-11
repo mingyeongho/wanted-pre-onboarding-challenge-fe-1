@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "../styles/components/_todoDetail.module.scss";
-import apis from "../utils/apis/apis";
-import { CONSTANT } from "../utils/constant";
-import { TodoDetailProps } from "../utils/interface";
-import { Nullable, TodoType } from "../utils/type";
+import apis from "../../utils/apis/apis";
+import { CONSTANT } from "../../utils/constant";
+import { TodoDetailProps } from "../../utils/interface";
+import { Nullable, TodoType } from "../../utils/type";
 
 const TodoDetail = ({ HeaderConfig, searchParams }: TodoDetailProps) => {
   const [todo, setTodo] = useState<Nullable<TodoType>>(null);
