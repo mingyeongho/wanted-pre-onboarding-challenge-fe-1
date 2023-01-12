@@ -42,6 +42,11 @@
         &:hover {
           background-color: map-get($common, "accent_hover_color");
         }
+
+        &:disabled {
+          background-color: #ddd;
+          cursor: no-drop;
+        }
       }
       &[type="button"] {
         color: map-get($common, "accent_color");

@@ -22,6 +22,21 @@
       &:focus {
         border-color: map-get($common, "accent_color");
       }
+
+      &.match {
+        border-color: map-get($common, "match");
+      }
+
+      &.not_match {
+        border-color: map-get($common, "not_match");
+      }
+    }
+
+    & > .error {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: red;
     }
   }
 
@@ -41,6 +56,11 @@
 
         &:hover {
           background-color: map-get($common, "accent_hover_color");
+        }
+
+        &:disabled {
+          background-color: #ddd;
+          cursor: no-drop;
         }
       }
       &[type="button"] {
