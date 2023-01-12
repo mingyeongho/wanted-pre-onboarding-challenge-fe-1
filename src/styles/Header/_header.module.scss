@@ -1,0 +1,28 @@
+@import "../variable.scss";
+
+.header_container {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    margin: 10px 0;
+    color: map-get($common, "accent_color");
+
+    & > .logout_btn {
+      background-color: map-get($common, "accent_color");
+      color: map-get($common, "white");
+      padding: 6px;
+      border: none;
+      border-radius: 6px;
+      transition: 0.2s all;
+
+      &:hover {
+        background-color: map-get($common, "accent_hover_color");
+      }
+    }
+  }
+}
