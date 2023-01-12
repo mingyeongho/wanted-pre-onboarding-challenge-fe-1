@@ -9,9 +9,11 @@ const Header = () => {
     <header className={styles.header_container}>
       <div className={styles.header}>
         <h1>{COMMON_CONSTANT.LOGO}</h1>
-        <button className={styles.logout_btn} onClick={onLogout}>
-          {COMMON_CONSTANT.LOGOUT}
-        </button>
+        <div className={styles.btn_wrapper}>
+          <button className={styles.logout_btn} onClick={onLogout}>
+            {COMMON_CONSTANT.LOGOUT}
+          </button>
+        </div>
       </div>
     </header>
   );

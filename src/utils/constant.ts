@@ -6,4 +6,5 @@ export const COMMON_CONSTANT = {
   LOGIN: "로그인",
   SIGNUP: "회원가입",
   TOKEN_KEY: "usersToken",
+  CREATE_TODO: "새 글 작성",
 };

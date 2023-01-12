@@ -1,0 +1,41 @@
+@import "../variable.scss";
+
+.todo_detail_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+
+  & > .create_btn {
+    & > button {
+      background-color: map-get($common, "accent_color");
+      color: map-get($common, "white");
+      padding: 6px;
+      border: none;
+      border-radius: 6px;
+      transition: 0.2s all;
+
+      &:hover {
+        background-color: map-get($common, "accent_hover_color");
+      }
+    }
+  }
+
+  & > .detail_btns {
+    display: flex;
+    gap: 10px;
+
+    & > button {
+      background-color: map-get($common, "accent_color");
+      color: map-get($common, "white");
+      padding: 6px;
+      border: none;
+      border-radius: 6px;
+      transition: 0.2s all;
+
+      &:hover {
+        background-color: map-get($common, "accent_hover_color");
+      }
+    }
+  }
+}

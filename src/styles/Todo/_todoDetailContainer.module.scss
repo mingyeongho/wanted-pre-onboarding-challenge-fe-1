@@ -1,0 +1,10 @@
+@import "../variable.scss";
+
+.todo_detail_container {
+  flex: 3;
+
+  & > .separate {
+    height: 1px;
+    background-color: #ddd;
+  }
+}
