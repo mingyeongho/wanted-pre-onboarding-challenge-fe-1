@@ -1,0 +1,14 @@
+@import "../variable.scss";
+
+.todo_container {
+  box-shadow: map-get($shadow_box, "box_shadow");
+  width: 800px;
+  height: 600px;
+  display: flex;
+  border-radius: 10px;
+
+  & > .separate {
+    width: 1px;
+    background-color: #ddd;
+  }
+}
