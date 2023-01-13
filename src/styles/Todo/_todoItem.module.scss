@@ -1,9 +1,16 @@
 @import "../variable.scss";
 
 .todo_item {
-  padding: 20px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  margin: 8px;
   font-size: 1.2rem;
+  background-color: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s all;
 
   &.focus {
     background-color: map-get($common, "accent_color");
@@ -13,5 +20,10 @@
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:active {
+    background: map-get($common, "accent_color");
+    color: white;
   }
 }

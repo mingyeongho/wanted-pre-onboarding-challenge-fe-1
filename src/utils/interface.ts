@@ -36,3 +36,7 @@ export interface CreateTodoProps {
 export interface TodoItemProps {
   todo: TodoType;
 }
+
+export interface DetailTodoProps {
+  todo: TodoType;
+}

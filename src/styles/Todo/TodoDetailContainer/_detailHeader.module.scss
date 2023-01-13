@@ -1,0 +1,30 @@
+@import "../../variable.scss";
+
+.detail_header {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    background-color: map-get($common, "accent_color");
+    color: map-get($common, "white");
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.3s background-color;
+
+    &:hover {
+      background-color: map-get($common, "accent_hover_color");
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: no-drop;
+    }
+  }
+
+  & > .detail_btn_wrapper {
+    display: flex;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../../variable.scss";
+
+.detail_todo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > .title_wrapper,
+  & > .content_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & > label {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      color: map-get($common, "accent_color");
+    }
+
+    & > input,
+    & > textarea {
+      padding: 10px;
+      letter-spacing: 1px;
+    }
+
+    & > textarea {
+      flex: 1;
+      resize: none;
+    }
+  }
+
+  & > .content_wrapper {
+    flex: 1;
+  }
+}

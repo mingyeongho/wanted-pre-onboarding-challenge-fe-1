@@ -5,16 +5,19 @@ import { TodoItemProps } from "../../utils/interface";
 const TodoItem = ({ todo }: TodoItemProps) => {
   const { title, id } = todo;
   const [searchParams, setSearchParams] = useSearchParams();
+  const curId = searchParams.get("id");
 
   const onClick = () => {
-    const curId = searchParams.get("id");
     curId === id ? setSearchParams() : setSearchParams({ id });
   };
 
   return (
-    <div onClick={onClick} className={styles.todo_item}>
+    <button
+      onClick={onClick}
+      className={`${styles.todo_item} ${curId === id ? styles.focus : ""}`}
+    >
       {title}
-    </div>
+    </button>
   );
 };
 
