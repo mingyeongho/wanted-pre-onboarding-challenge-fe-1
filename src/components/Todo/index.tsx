@@ -1,5 +1,5 @@
 import styles from "../../styles/Todo/_index.module.scss";
-import TodoDetailContainer from "./TodoDetailContainer";
+import TodoDetail from "./TodoDetail";
 import TodoList from "./TodoList";
 
 const Todo = () => {
@@ -7,7 +7,7 @@ const Todo = () => {
     <div className={styles.todo_container}>
       <TodoList />
       <div className={styles.separate}></div>
-      <TodoDetailContainer />
+      <TodoDetail />
     </div>
   );
 };
