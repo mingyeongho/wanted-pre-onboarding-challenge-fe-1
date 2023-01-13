@@ -1,0 +1,17 @@
+@import "../variable.scss";
+
+.todo_item {
+  padding: 20px;
+  display: flex;
+  font-size: 1.2rem;
+
+  &.focus {
+    background-color: map-get($common, "accent_color");
+    color: white;
+    border-radius: 10px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

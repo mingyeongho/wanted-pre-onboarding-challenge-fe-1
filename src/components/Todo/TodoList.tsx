@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { APIS } from "../../apis/apis";
 import styles from "../../styles/Todo/_todoList.module.scss";
 import { TodoType } from "../../utils/type";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState<null | TodoType[]>(null);
+  const [todoList, setTodoList] = useState<TodoType[]>();
 
   useEffect(() => {
     (async () => {
-      const todos = await APIS.Todo.getTodo();
-      setTodoList(todos);
+      await APIS.Todo.getTodos()
+        .then((res) => setTodoList(res.reverse()))
+        .catch((e) => console.error(e));
     })();
   }, []);
 
   return (
-    <div className={styles.todo_list_container}>
-      {todoList && todoList?.length > 0 ? (
-        <div></div>
+    <div className={styles.todo_list}>
+      {todoList ? (
+        todoList.map((todo, idx) => (
+          <Fragment key={idx}>
+            <TodoItem todo={todo} />
+            <div className={styles.separate}></div>
+          </Fragment>
+        ))
       ) : (
-        <span>TodoList가 비었습니다.</span>
+        <span>등록된 Todo가 없습니다.</span>
       )}
     </div>
   );

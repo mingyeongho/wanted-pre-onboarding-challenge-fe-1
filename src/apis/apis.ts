@@ -1,7 +1,8 @@
 import token from "../functions/Token/token";
 import { COMMON_CONSTANT } from "../utils/constant";
 import { post_login, post_signup } from "./Auth/post";
-import { get_todos } from "./Todo/get";
+import { get_todos, get_todo_by_id } from "./Todo/get";
+import { create_todo } from "./Todo/post";
 
 const base_url = import.meta.env.VITE_API_URL;
 export const headers = {
@@ -30,6 +31,14 @@ export const APIS = {
       await post_signup(email, password),
   },
   Todo: {
-    getTodo: async () => await get_todos(),
+    getTodos: async () => await get_todos(),
+    getTodoById: async (id: string) => await get_todo_by_id(id),
+    createTodo: async ({
+      title,
+      content,
+    }: {
+      title: string;
+      content: string;
+    }) => await create_todo({ title, content }),
   },
 };

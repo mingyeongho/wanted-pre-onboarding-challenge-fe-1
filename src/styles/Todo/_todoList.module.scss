@@ -1,6 +1,11 @@
 @import "../variable.scss";
 
-.todo_list_container {
-  flex: 1;
+.todo_list {
   margin: 20px;
+  width: 150px;
+
+  .separate {
+    height: 1px;
+    background-color: #ddd;
+  }
 }

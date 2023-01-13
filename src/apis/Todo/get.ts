@@ -10,3 +10,10 @@ export const get_todos = async () => {
     })
     .catch((e) => console.error(e));
 };
+
+export const get_todo_by_id = async (id: string) => {
+  return await axios
+    .get(APIS_URL.Todo.getTodoById(id), { headers })
+    .then((res) => res.data.data)
+    .catch((e) => console.error(e));
+};
