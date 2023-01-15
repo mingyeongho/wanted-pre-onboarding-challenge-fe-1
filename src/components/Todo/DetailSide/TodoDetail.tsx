@@ -22,9 +22,11 @@ const TodoDetail = ({ currTodo, setRefresh }: TodoDetailProps) => {
   const conditional = () => {
     switch (state) {
       case "detail":
-        return <DetailSection {...currTodo!} />;
+        return currTodo && <DetailSection {...currTodo} />;
       case "update":
-        return <UpdateSection currTodo={currTodo!} setRefresh={setRefresh} />;
+        return (
+          currTodo && <UpdateSection {...currTodo} setRefresh={setRefresh} />
+        );
       case "create":
         return <CreateSection setRefresh={setRefresh} />;
       default:

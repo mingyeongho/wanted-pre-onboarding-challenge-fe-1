@@ -51,6 +51,10 @@ export interface CreateSectionProps {
 }
 
 export interface UpdateSectionProps {
-  currTodo: TodoType;
+  title: string;
+  id: string;
+  content: string;
+  updatedAt: string;
+  createdAt: string;
   setRefresh: React.Dispatch<SetStateAction<number>>;
 }

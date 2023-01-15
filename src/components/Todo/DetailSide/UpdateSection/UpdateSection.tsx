@@ -10,14 +10,18 @@ import Button from "../../../Reusable/Button/Button";
 import Input from "../../../Reusable/Input/Input";
 import * as UpdateSectionStyle from "./style";
 
-const UpdateSection = ({ currTodo, setRefresh }: UpdateSectionProps) => {
-  const { id } = currTodo;
+const UpdateSection = ({
+  id,
+  title,
+  content,
+  setRefresh,
+}: UpdateSectionProps) => {
   const setSearchParams = useSearchParams()[1];
   const [inputs, setInputs] = useState({
-    title: currTodo.title,
-    content: currTodo.content,
+    updateTitle: title,
+    updateContent: content,
   });
-  const { title, content } = inputs;
+  const { updateTitle, updateContent } = inputs;
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -26,8 +30,8 @@ const UpdateSection = ({ currTodo, setRefresh }: UpdateSectionProps) => {
   const titleInputProps: InputProps = {
     type: "text",
     label: "Title",
-    id: "title",
-    value: title,
+    id: "updateTitle",
+    value: updateTitle,
     placeholder: "Title을 입력해주세요.",
     onChange,
   };
@@ -38,8 +42,12 @@ const UpdateSection = ({ currTodo, setRefresh }: UpdateSectionProps) => {
     callback: async () => {
       const isUpdate = confirm("수정하시겠습니까?");
       if (isUpdate) {
-        await APIS.Todo.update_todo({ title, content, id });
-        setInputs({ title: "", content: "" });
+        await APIS.Todo.update_todo({
+          title: updateTitle,
+          content: updateContent,
+          id,
+        });
+        setInputs({ updateTitle: "", updateContent: "" });
         setSearchParams();
         setRefresh((prev) => prev + 1);
       }
@@ -52,7 +60,7 @@ const UpdateSection = ({ currTodo, setRefresh }: UpdateSectionProps) => {
     callback: () => {
       const isCancel = confirm("변경을 취소하시겠습니까?");
       if (isCancel) {
-        setInputs({ title: "", content: "" });
+        setInputs({ updateTitle: "", updateContent: "" });
         setSearchParams({ state: "detail", id });
       }
     },
@@ -65,9 +73,9 @@ const UpdateSection = ({ currTodo, setRefresh }: UpdateSectionProps) => {
       <div className="textarea_wrapper">
         <label htmlFor="content">Content</label>
         <textarea
-          name="content"
+          name="updateContent"
           id="content"
-          value={content}
+          value={updateContent}
           onChange={onChange}
           placeholder="Content를 입력해주세요."
         ></textarea>
