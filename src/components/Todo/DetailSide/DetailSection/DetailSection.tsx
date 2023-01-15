@@ -26,7 +26,7 @@ const DetailSection = ({
     type: "button",
     text: "취소",
     callback: () => {
-      setSearchParams({ state: "detail", id });
+      setSearchParams();
     },
   };
   return (
