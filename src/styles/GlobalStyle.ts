@@ -20,12 +20,19 @@ export const GlobalStyle = createGlobalStyle`
   main {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
   }
 
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  .separate_x {
+    height: 1px;
+    background-color: #ddd;
   }
 `;

@@ -1,6 +1,6 @@
 class Token {
   public getToken({ key }: { key: string }) {
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
   }
 
   public setToken({ key, value }: { key: string; value: string }) {
