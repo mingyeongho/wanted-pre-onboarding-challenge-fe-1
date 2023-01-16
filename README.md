@@ -98,3 +98,32 @@ Logout
     <summary>Second Refactoring</summary>
     <p></p>
 </details>
+<details>
+    <summary>실행방법</summary>
+    <p>
+    
+Backend
+```
+> https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api.git을 클론
+
+yarn
+
+yarn start
+
+```
+
+Frontend
+```
+
+> root directory에 .env 파일을 만들고 VITE_API_URL=http://localhost:8080을 적어둔다.
+
+npm i
+
+npm run dev
+
+```
+
+</p>
+
+</details>
+```
