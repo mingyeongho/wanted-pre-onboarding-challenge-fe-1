@@ -2,11 +2,9 @@
  * `@와 .이 포함되어 있어야 한다.`
  */
 const isEmailValid = ({ email }: { email: string }) => {
-  /**
-   * regex를 이용한 validation은 나중에 하기로 하자...
-   */
+  const regex = /@.+\./;
 
-  if (email.includes("@") && email.includes(".")) return true;
+  if (regex.test(email)) return true;
   return false;
 };
 

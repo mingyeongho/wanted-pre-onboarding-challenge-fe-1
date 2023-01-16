@@ -82,7 +82,17 @@ Logout
 </details>
 <details>
     <summary>First Refactoring</summary>
-    <p></p>
+    <p>
+
+1.  Validation에서 정규표현식의 사용
+    Befor: <img width="558" alt="image" src="https://user-images.githubusercontent.com/57670160/212604258-0e819e87-3015-4c8c-a720-a516b876154f.png">
+    After: <img width="511" alt="image" src="https://user-images.githubusercontent.com/57670160/212604387-baedfe51-d7ed-45ce-a621-26107a760e4c.png">
+
+2.  선언형 프로그래밍의 사용
+
+3.
+
+</p>
 </details>
 <details>
     <summary>Second Refactoring</summary>
