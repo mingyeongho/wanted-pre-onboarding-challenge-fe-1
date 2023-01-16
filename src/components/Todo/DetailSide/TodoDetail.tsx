@@ -1,15 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
-import APIS from "../../../apis/apis";
-import timeDiff from "../../../utils/function/timeDiff";
-import {
-  ButtonProps,
-  InputProps,
-  TodoDetailProps,
-} from "../../../utils/interface";
-import { TodoType } from "../../../utils/type";
-import Button from "../../Reusable/Button/Button";
-import Input from "../../Reusable/Input/Input";
+import { useLocation } from "react-router-dom";
+import { TodoDetailProps } from "../../../utils/interface";
 import CreateSection from "./CreateSection/CreateSection";
 import DefaultSection from "./DefaultSection/DefaultSection";
 import DetailSection from "./DetailSection/DetailSection";

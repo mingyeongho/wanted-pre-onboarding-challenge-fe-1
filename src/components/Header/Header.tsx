@@ -1,4 +1,3 @@
-import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { TOKEN_KEY } from "../../utils/constants";
 import { ButtonProps } from "../../utils/interface";
