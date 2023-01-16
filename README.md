@@ -40,8 +40,8 @@
   - [x] 이메일과 비밀번호가 모두 입력되어 있고, 조건을 만족해야 제출 버튼이 활성화 되도록 해주세요
 - 로그인 API를 호출하고, 올바른 응답을 받았을 때 루트 경로로 이동시켜주세요
   - [x] 응답으로 받은 토큰은 로컬 스토리지에 저장해주세요
-  - [ ] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트 시켜주세요
-  - [ ] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트 시켜주세요
+  - [x] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트 시켜주세요
+  - [x] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트 시켜주세요
 
 Todo List
 
@@ -64,7 +64,21 @@ Todo List
 
 <details>
     <summary>First Preview</summary>
-    <p></p>
+    <p>
+
+Auth
+
+- ![Auth](https://user-images.githubusercontent.com/57670160/212594831-9d114bd3-6afd-413b-8803-8fcfe0536928.gif)
+
+Todo
+
+- ![Todo](https://user-images.githubusercontent.com/57670160/212594975-8b4e530d-41fc-4c58-a35e-8c7d12d10275.gif)
+
+Logout
+
+- ![Logout](https://user-images.githubusercontent.com/57670160/212595076-4cd7a378-5029-4afa-b4e0-1ce58298a7f2.gif)
+
+  </p>
 </details>
 <details>
     <summary>First Refactoring</summary>
