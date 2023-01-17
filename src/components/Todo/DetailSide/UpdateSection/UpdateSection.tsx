@@ -1,22 +1,23 @@
+import axios from "axios";
 import { ChangeEvent, useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import APIS from "../../../../apis/apis";
+import { TOKEN_KEY } from "../../../../utils/constants";
 import {
   ButtonProps,
   InputProps,
   UpdateSectionProps,
 } from "../../../../utils/interface";
+import token from "../../../../utils/token";
 import Button from "../../../Reusable/Button/Button";
 import Input from "../../../Reusable/Input/Input";
 import * as UpdateSectionStyle from "./style";
 
-const UpdateSection = ({
-  id,
-  title,
-  content,
-  setRefresh,
-}: UpdateSectionProps) => {
+const UpdateSection = ({ id, title, content }: UpdateSectionProps) => {
   const setSearchParams = useSearchParams()[1];
+  const queryClient = useQueryClient();
+
   const [inputs, setInputs] = useState({
     updateTitle: title,
     updateContent: content,
@@ -26,6 +27,32 @@ const UpdateSection = ({
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const mutation = useMutation({
+    mutationFn: ({
+      updateTitle,
+      updateContent,
+      id,
+    }: {
+      updateTitle: string;
+      updateContent: string;
+      id: string;
+    }) =>
+      axios.put(
+        `http://localhost:8080/todos/${id}`,
+        { title: updateTitle, content: updateContent },
+        {
+          headers: {
+            Authorization: token.getToken({ key: TOKEN_KEY }),
+          },
+        }
+      ),
+    onSuccess: () => {
+      setInputs({ updateTitle: "", updateContent: "" });
+      setSearchParams();
+      queryClient.invalidateQueries({ queryKey: "getTodos" });
+    },
+  });
 
   const titleInputProps: InputProps = {
     type: "text",
@@ -39,18 +66,9 @@ const UpdateSection = ({
   const updateBtnProps: ButtonProps = {
     type: "submit",
     text: "수정",
-    callback: async () => {
+    callback: () => {
       const isUpdate = confirm("수정하시겠습니까?");
-      if (isUpdate) {
-        await APIS.Todo.update_todo({
-          title: updateTitle,
-          content: updateContent,
-          id,
-        });
-        setInputs({ updateTitle: "", updateContent: "" });
-        setSearchParams();
-        setRefresh((prev) => prev + 1);
-      }
+      isUpdate && mutation.mutate({ updateTitle, updateContent, id });
     },
   };
 

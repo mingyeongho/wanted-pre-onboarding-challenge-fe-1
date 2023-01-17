@@ -1,6 +1,7 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import APIS from "../../apis/apis";
 import isEmailValid from "../../utils/function/isEmailValid";
 import isPasswordValid from "../../utils/function/isPasswordValid";
 import isValid from "../../utils/function/isValid";
@@ -21,10 +22,19 @@ const Signup = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const mutation = useMutation({
+    mutationFn: ({ email, password }: { email: string; password: string }) =>
+      axios.post(`http://localhost:8080/users/create`, { email, password }),
+    onSuccess: (res) => {
+      const { message }: { message: string } = res.data;
+      alert(message);
+      navigate("/auth");
+    },
+  });
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const resSignup = await APIS.Auth.signup({ email, password });
-    resSignup && navigate("/auth");
+    mutation.mutate({ email, password });
   };
 
   const onOpenLogin = () => {

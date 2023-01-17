@@ -1,42 +1,41 @@
-import React from "react";
+import axios from "axios";
+import { useMutation, useQueryClient } from "react-query";
 import { useSearchParams } from "react-router-dom";
-import APIS from "../../../../apis/apis";
+import { TOKEN_KEY } from "../../../../utils/constants";
 import { ButtonProps, TodoItemProps } from "../../../../utils/interface";
+import token from "../../../../utils/token";
 import Button from "../../../Reusable/Button/Button";
 import * as TodoItemStyle from "./style";
 
-const TodoItem = ({
-  title,
-  id,
-  callback,
-  setRefresh,
-  currId,
-}: TodoItemProps) => {
+const TodoItem = ({ title, id, onClick, currId }: TodoItemProps) => {
   const setSearchParams = useSearchParams()[1];
+  const queryClient = useQueryClient();
 
-  const buttonProps: ButtonProps = {
+  const mutation = useMutation({
+    mutationFn: () =>
+      axios.delete(`http://localhost:8080/todos/${id}`, {
+        headers: { Authorization: token.getToken({ key: TOKEN_KEY }) },
+      }),
+    onSuccess: () => {
+      setSearchParams();
+      queryClient.invalidateQueries({ queryKey: "getTodos" });
+    },
+  });
+
+  const removeButtonProps: ButtonProps = {
     type: "button",
     text: "삭제",
-    callback: async (e: React.MouseEvent<HTMLButtonElement>) => {
-      const isDelete = confirm("정말 삭제하시겠습니까?");
-      isDelete &&
-        (await APIS.Todo.delete_todo(id).then((_) => {
-          alert(`${title}이 삭제되었습니다.`);
-          setSearchParams();
-          setRefresh((prev) => prev + 1);
-        }));
-      e.stopPropagation();
-    },
+    callback: () => mutation.mutate(),
   };
 
   return (
     <TodoItemStyle.TodoItem
-      onClick={() => callback(id)}
+      onClick={() => onClick(id)}
       className={currId === id ? "focus" : ""}
     >
       <span>{title}</span>
       <div>
-        <Button {...buttonProps} />
+        <Button {...removeButtonProps} />
       </div>
     </TodoItemStyle.TodoItem>
   );

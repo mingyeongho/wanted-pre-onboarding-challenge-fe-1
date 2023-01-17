@@ -5,7 +5,10 @@ import Input from "../Reusable/Input/Input";
 import { ButtonProps, InputProps } from "../../utils/interface";
 import * as AuthFormStyle from "./style";
 import isValid from "../../utils/function/isValid";
-import APIS from "../../apis/apis";
+import { useMutation } from "react-query";
+import axios from "axios";
+import { TOKEN_KEY } from "../../utils/constants";
+import Token from "../../utils/token";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -19,10 +22,20 @@ const Auth = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const mutation = useMutation({
+    mutationFn: ({ email, password }: { email: string; password: string }) =>
+      axios.post(`http://localhost:8080/users/login`, { email, password }),
+    onSuccess: (res) => {
+      const { message, token }: { message: string; token: string } = res.data;
+      Token.setToken({ key: TOKEN_KEY, value: token });
+      alert(message);
+      navigate("/");
+    },
+  });
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const resLogin = await APIS.Auth.login({ email, password });
-    resLogin && navigate("/");
+    mutation.mutate({ email, password });
   };
 
   const onOpenSignup = () => {

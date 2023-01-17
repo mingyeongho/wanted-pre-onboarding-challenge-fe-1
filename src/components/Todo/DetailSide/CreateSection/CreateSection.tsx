@@ -1,17 +1,22 @@
+import axios from "axios";
 import { ChangeEvent, useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import { useSearchParams } from "react-router-dom";
-import APIS from "../../../../apis/apis";
+import { TOKEN_KEY } from "../../../../utils/constants";
 import {
   ButtonProps,
   CreateSectionProps,
   InputProps,
 } from "../../../../utils/interface";
+import token from "../../../../utils/token";
 import Button from "../../../Reusable/Button/Button";
 import Input from "../../../Reusable/Input/Input";
 import * as CreateSectionStyle from "./style";
 
 const CreateSection = ({ setRefresh }: CreateSectionProps) => {
   const setSearchParams = useSearchParams()[1];
+  const queryClient = useQueryClient();
+
   const [createInputs, setCreateInputs] = useState({
     title: "",
     content: "",
@@ -21,6 +26,23 @@ const CreateSection = ({ setRefresh }: CreateSectionProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCreateInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const mutation = useMutation({
+    mutationFn: ({ title, content }: { title: string; content: string }) =>
+      axios.post(
+        `http://localhost:8080/todos`,
+        { title, content },
+        {
+          headers: {
+            Authorization: token.getToken({ key: TOKEN_KEY }),
+          },
+        }
+      ),
+    onSuccess: () => {
+      setSearchParams();
+      queryClient.invalidateQueries({ queryKey: "getTodos" });
+    },
+  });
 
   const titleInputProps: InputProps = {
     type: "text",
@@ -34,15 +56,7 @@ const CreateSection = ({ setRefresh }: CreateSectionProps) => {
   const saveBtnProps: ButtonProps = {
     type: "submit",
     text: "저장",
-    callback: async () => {
-      const isSave = confirm("저장하시겠습니까?");
-      if (isSave) {
-        await APIS.Todo.create_todo({ title, content });
-        setSearchParams();
-        setCreateInputs({ title: "", content: "" });
-        setRefresh((prev) => prev + 1);
-      }
-    },
+    callback: () => mutation.mutate({ title, content }),
   };
 
   const cancelBtnProps: ButtonProps = {

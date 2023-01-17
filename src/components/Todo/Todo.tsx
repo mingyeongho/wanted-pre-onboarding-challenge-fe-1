@@ -14,18 +14,6 @@ const Todo = () => {
   const [refresh, setRefresh] = useState(0); // cnt가 올라갈때마다 refresh
 
   /**
-   * todo list를 가져오는 useEffect
-   */
-  useEffect(() => {
-    (async () => {
-      await APIS.Todo.get_todos().then((res) => {
-        const { data } = res;
-        setTodoList(data.data.reverse());
-      });
-    })();
-  }, [refresh]);
-
-  /**
    * getTodoById 로직
    */
   useEffect(() => {
@@ -41,7 +29,7 @@ const Todo = () => {
 
   return (
     <TodoStyle.Todo>
-      <TodoList currId={id} todoList={todoList} setRefresh={setRefresh} />
+      <TodoList currId={id} setRefresh={setRefresh} />
       <div className="separate_y"></div>
       <TodoDetail currTodo={currTodo} setRefresh={setRefresh} />
     </TodoStyle.Todo>

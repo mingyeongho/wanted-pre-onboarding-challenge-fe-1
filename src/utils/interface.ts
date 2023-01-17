@@ -25,9 +25,12 @@ export interface ButtonProps {
 }
 
 export interface TodoListProps {
-  todoList: TodoType[];
   currId: string | null;
   setRefresh: React.Dispatch<SetStateAction<number>>;
+}
+
+export interface TodosProps {
+  todoList: TodoType[];
 }
 
 export interface TodoItemProps {
@@ -36,8 +39,7 @@ export interface TodoItemProps {
   id: string;
   createdAt: string;
   updatedAt: string;
-  callback: (id: string) => void;
-  setRefresh: React.Dispatch<SetStateAction<number>>;
+  onClick: (id: string) => void;
   currId: string | null;
 }
 
@@ -56,5 +58,4 @@ export interface UpdateSectionProps {
   content: string;
   updatedAt: string;
   createdAt: string;
-  setRefresh: React.Dispatch<SetStateAction<number>>;
 }

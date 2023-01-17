@@ -85,24 +85,34 @@ Logout
     <p>
 
 1.  Validation에서 정규표현식의 사용
-    Befor: <img width="558" alt="image" src="https://user-images.githubusercontent.com/57670160/212604258-0e819e87-3015-4c8c-a720-a516b876154f.png">
-    After: <img width="511" alt="image" src="https://user-images.githubusercontent.com/57670160/212604387-baedfe51-d7ed-45ce-a621-26107a760e4c.png">
+
+- Befor: <img width="558" alt="image" src="https://user-images.githubusercontent.com/57670160/212604258-0e819e87-3015-4c8c-a720-a516b876154f.png">
+- After: <img width="511" alt="image" src="https://user-images.githubusercontent.com/57670160/212604387-baedfe51-d7ed-45ce-a621-26107a760e4c.png">
 
 2.  선언형 프로그래밍의 사용
 
-3.
+- 내가 무엇을 할지는 드러내고 어떻게 할지는 감추는 방법.
+- 같은 목적 or 비슷한 목적을 갖는 코드는 모아두자.
+  - 일단 모두 모아두는 것이 아니라 당장 몰라도 되는 디테일만 모아두자.
+- 함수는 하나의 일만 한다. (단일 책임)
+- 필요한 부분만 노출하자.
 
 </p>
 </details>
 <details>
     <summary>Second Refactoring</summary>
-    <p></p>
+    <p>
+    
+React-query 도입
+    
+  </p>
 </details>
 <details>
     <summary>실행방법</summary>
     <p>
     
 Backend
+
 ```
 > https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api.git을 클론
 
@@ -113,6 +123,7 @@ yarn start
 ```
 
 Frontend
+
 ```
 
 > root directory에 .env 파일을 만들고 VITE_API_URL=http://localhost:8080을 적어둔다.
@@ -126,4 +137,3 @@ npm run dev
 </p>
 
 </details>
-```
