@@ -1,4 +1,5 @@
 const baseUrl: string = import.meta.env.VITE_API_URL;
+
 export const API_URLS = {
   auth: {
     login: baseUrl + `/users/login`,
