@@ -1,6 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
+
 import { useSearchParams } from "react-router-dom";
 import APIS from "../../../../apis/apis";
 import { TOKEN_KEY } from "../../../../utils/constants";
@@ -50,7 +51,7 @@ const UpdateSection = ({ id, title, content }: UpdateSectionProps) => {
     onSuccess: () => {
       setInputs({ updateTitle: "", updateContent: "" });
       setSearchParams();
-      queryClient.invalidateQueries({ queryKey: "getTodos" });
+      queryClient.invalidateQueries({ queryKey: ["getTodos"] });
     },
   });
 

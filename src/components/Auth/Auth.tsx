@@ -5,10 +5,10 @@ import Input from "../Reusable/Input/Input";
 import { ButtonProps, InputProps } from "../../utils/interface";
 import * as AuthFormStyle from "./style";
 import isValid from "../../utils/function/isValid";
-import { useMutation } from "react-query";
 import axios from "axios";
 import { TOKEN_KEY } from "../../utils/constants";
 import Token from "../../utils/token";
+import { useMutation } from "@tanstack/react-query";
 
 const Auth = () => {
   const navigate = useNavigate();

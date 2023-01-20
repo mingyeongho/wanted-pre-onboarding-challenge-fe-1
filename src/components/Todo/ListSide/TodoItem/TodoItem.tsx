@@ -1,5 +1,6 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useMutation, useQueryClient } from "react-query";
+
 import { useSearchParams } from "react-router-dom";
 import { TOKEN_KEY } from "../../../../utils/constants";
 import { ButtonProps, TodoItemProps } from "../../../../utils/interface";
@@ -18,7 +19,7 @@ const TodoItem = ({ title, id, onClick, currId }: TodoItemProps) => {
       }),
     onSuccess: () => {
       setSearchParams();
-      queryClient.invalidateQueries({ queryKey: "getTodos" });
+      queryClient.invalidateQueries({ queryKey: ["getTodos"] });
     },
   });
 

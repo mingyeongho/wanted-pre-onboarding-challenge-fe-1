@@ -1,6 +1,7 @@
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useMutation } from "react-query";
+
 import { useNavigate } from "react-router-dom";
 import isEmailValid from "../../utils/function/isEmailValid";
 import isPasswordValid from "../../utils/function/isPasswordValid";

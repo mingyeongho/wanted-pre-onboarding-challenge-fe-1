@@ -14,9 +14,7 @@ const TodoDetail = ({ currTodo, setRefresh }: TodoDetailProps) => {
       case "detail":
         return currTodo && <DetailSection {...currTodo} />;
       case "update":
-        return (
-          currTodo && <UpdateSection {...currTodo} setRefresh={setRefresh} />
-        );
+        return currTodo && <UpdateSection {...currTodo} />;
       case "create":
         return <CreateSection setRefresh={setRefresh} />;
       default:

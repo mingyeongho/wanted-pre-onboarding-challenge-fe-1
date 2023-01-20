@@ -1,6 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
+
 import { useSearchParams } from "react-router-dom";
 import { TOKEN_KEY } from "../../../../utils/constants";
 import {
@@ -40,7 +41,7 @@ const CreateSection = ({ setRefresh }: CreateSectionProps) => {
       ),
     onSuccess: () => {
       setSearchParams();
-      queryClient.invalidateQueries({ queryKey: "getTodos" });
+      queryClient.invalidateQueries({ queryKey: ["getTodos"] });
     },
   });
 

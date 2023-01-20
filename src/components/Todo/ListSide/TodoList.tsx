@@ -1,6 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Fragment } from "react";
-import { useQuery } from "react-query";
+
 import { useSearchParams } from "react-router-dom";
 import APIS from "../../../apis/apis";
 import { TOKEN_KEY } from "../../../utils/constants";
@@ -16,7 +17,7 @@ import Todos from "./Todos/Todos";
 const TodoList = ({ currId, setRefresh }: TodoListProps) => {
   const setSearchParams = useSearchParams()[1];
   const { data } = useQuery<TodoType[]>({
-    queryKey: "getTodos",
+    queryKey: ["getTodos"],
     queryFn: () =>
       axios
         .get("http://localhost:8080/todos", {
