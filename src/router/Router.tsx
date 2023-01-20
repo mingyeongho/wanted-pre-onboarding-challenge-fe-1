@@ -13,8 +13,6 @@ const Router = () => {
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/");
-    } else {
-      navigate("/auth");
     }
   }, []);
 
