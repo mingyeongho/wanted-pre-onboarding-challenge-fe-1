@@ -18,7 +18,7 @@ const useAuth = () => {
   };
 
   const onOpen = () => {
-    navigate("/signup");
+    navigate("signup");
   };
 
   const mutation = useMutation({
