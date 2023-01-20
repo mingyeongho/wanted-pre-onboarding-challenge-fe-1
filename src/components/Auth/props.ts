@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import isValid from "../../utils/function/isValid";
 import { ButtonProps, InputProps } from "../../utils/interface";
 
 interface emailProps {
@@ -15,6 +16,8 @@ interface loginBtnProps {
   type: "button" | "submit" | "reset";
   text: string;
   callback: (e: any) => void;
+  email: string;
+  password: string;
 }
 
 interface signupBtnProps {
@@ -45,11 +48,18 @@ export const password = ({ value, onChange }: passwordProps): InputProps => {
   };
 };
 
-export const login = ({ text, callback, type }: loginBtnProps): ButtonProps => {
+export const login = ({
+  text,
+  callback,
+  type,
+  email,
+  password,
+}: loginBtnProps): ButtonProps => {
   return {
     type,
     text,
     callback: callback,
+    isDisabled: !isValid({ email, password }),
   };
 };
 

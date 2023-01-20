@@ -19,6 +19,8 @@ const Auth = () => {
             text: "로그인",
             type: "submit",
             callback: onSubmit,
+            email,
+            password,
           })}
         />
         <Button
