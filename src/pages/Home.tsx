@@ -6,7 +6,9 @@ const Home = () => {
     <>
       <Header />
       <div className="separate_x"></div>
-      <main>{/* <Todo /> */}</main>
+      <main>
+        <Todo />
+      </main>
     </>
   );
 };

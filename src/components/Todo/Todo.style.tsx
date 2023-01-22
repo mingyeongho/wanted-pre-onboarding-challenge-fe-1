@@ -6,9 +6,4 @@ export const Todo = styled.div`
   width: 800px;
   border-radius: 10px;
   display: flex;
-
-  .separate_y {
-    width: 1px;
-    background-color: #ddd;
-  }
 `;

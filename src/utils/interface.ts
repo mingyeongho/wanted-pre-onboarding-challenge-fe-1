@@ -17,35 +17,19 @@ export interface InputProps {
   isCorrect?: boolean;
 }
 
+export interface TextareaProps {
+  label: string;
+  id: string;
+  value: string;
+  placeholder: string;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
 export interface ButtonProps {
   type: "button" | "submit" | "reset";
   text: string;
   callback: (e: any) => void;
   isDisabled?: boolean;
-}
-
-export interface TodoListProps {
-  currId: string | null;
-  setRefresh: React.Dispatch<SetStateAction<number>>;
-}
-
-export interface TodosProps {
-  todoList: TodoType[];
-}
-
-export interface TodoItemProps {
-  title: string;
-  content: string;
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  onClick: (id: string) => void;
-  currId: string | null;
-}
-
-export interface TodoDetailProps {
-  currTodo: TodoType | null;
-  setRefresh: React.Dispatch<SetStateAction<number>>;
 }
 
 export interface CreateSectionProps {
@@ -58,4 +42,8 @@ export interface UpdateSectionProps {
   content: string;
   updatedAt: string;
   createdAt: string;
+}
+
+export interface TodoItemProps {
+  todoItem: TodoType;
 }

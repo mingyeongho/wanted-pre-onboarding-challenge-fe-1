@@ -1,38 +1,10 @@
 import axios from "axios";
-import { API_URLS } from "../utils/constants";
-import { post_login, post_signup } from "./Auth/post";
-import { delete_todo } from "./Todo/delete";
-import { get_todos, get_todo_by_id } from "./Todo/get";
-import { create_todo } from "./Todo/post";
-import { update_todo } from "./Todo/update";
+import { API_URLS, TOKEN_KEY } from "../utils/constants";
+import token from "../utils/token";
 
-const apis = {
-  Auth: {
-    login: async ({ email, password }: { email: string; password: string }) =>
-      await post_login({ email, password }),
-    signup: async ({ email, password }: { email: string; password: string }) =>
-      await post_signup({ email, password }),
-  },
-  Todo: {
-    get_todos: async () => await get_todos(),
-    get_todo_by_id: async (id: string) => await get_todo_by_id(id),
-    delete_todo: async (id: string) => await delete_todo(id),
-    create_todo: async ({
-      title,
-      content,
-    }: {
-      title: string;
-      content: string;
-    }) => await create_todo({ title, content }),
-    update_todo: async ({
-      title,
-      content,
-      id,
-    }: {
-      title: string;
-      content: string;
-      id: string;
-    }) => await update_todo({ title, content, id }),
+const Headers = {
+  headers: {
+    Authorization: token.getToken({ key: TOKEN_KEY }),
   },
 };
 
@@ -43,7 +15,14 @@ const APIS = {
     signup: (payload: { email: string; password: string }) =>
       axios.post(API_URLS.auth.signup, payload),
   },
-  Todo: {},
+  Todo: {
+    getTodos: () =>
+      axios.get(API_URLS.todo.get_todos, Headers).then((res) => res.data.data),
+    deleteTodo: (id: string) =>
+      axios.delete(API_URLS.todo.delete_todo(id), Headers),
+    createTodo: ({ title, content }: { title: string; content: string }) =>
+      axios.post(API_URLS.todo.create_todo, { title, content }, Headers),
+  },
 };
 
 export default APIS;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Palette } from "../../../../styles/Palette";
+import { Palette } from "../../../styles/Palette";
 
 export const TodoItem = styled.div`
   display: flex;
@@ -20,11 +20,11 @@ export const TodoItem = styled.div`
     background-color: ${Palette.accent_color_2};
     color: white;
   }
+`;
 
-  span {
-    width: 110px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+export const Title = styled.span`
+  width: 110px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;

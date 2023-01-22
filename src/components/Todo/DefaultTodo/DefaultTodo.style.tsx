@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Palette } from "../../../../styles/Palette";
+import { Palette } from "../../../styles/Palette";
 
-export const DefaultSection = styled.div`
+export const DefaultTodo = styled.div`
   flex: 1;
   height: 100%;
   font-size: 12rem;
