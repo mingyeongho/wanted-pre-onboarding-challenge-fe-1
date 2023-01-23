@@ -12,17 +12,19 @@ export interface InputProps {
   label: string;
   id: string;
   value: string;
-  placeholder: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   isCorrect?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface TextareaProps {
   label: string;
   id: string;
   value: string;
-  placeholder: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  placeholder?: string;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  isDisabled?: boolean;
 }
 
 export interface ButtonProps {
@@ -32,18 +34,10 @@ export interface ButtonProps {
   isDisabled?: boolean;
 }
 
-export interface CreateSectionProps {
-  setRefresh: React.Dispatch<SetStateAction<number>>;
-}
-
-export interface UpdateSectionProps {
-  title: string;
-  id: string;
-  content: string;
-  updatedAt: string;
-  createdAt: string;
-}
-
 export interface TodoItemProps {
   todoItem: TodoType;
+}
+
+export interface DetailTodoProps {
+  currTodo: TodoType;
 }

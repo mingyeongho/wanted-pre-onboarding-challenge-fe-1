@@ -9,6 +9,7 @@ const Input = ({
   onChange,
   placeholder,
   isCorrect,
+  isDisabled,
 }: InputProps) => {
   return (
     <InputStyle.Input>
@@ -21,6 +22,7 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         autoComplete="off"
+        disabled={isDisabled}
         className={
           typeof isCorrect === "boolean"
             ? isCorrect

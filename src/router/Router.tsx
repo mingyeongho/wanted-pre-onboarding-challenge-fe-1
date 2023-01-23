@@ -10,12 +10,6 @@ const Router = () => {
   const navigate = useNavigate();
   const isLoggedIn = token.getToken({ key: TOKEN_KEY });
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />

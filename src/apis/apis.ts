@@ -22,6 +22,10 @@ const APIS = {
       axios.delete(API_URLS.todo.delete_todo(id), Headers),
     createTodo: ({ title, content }: { title: string; content: string }) =>
       axios.post(API_URLS.todo.create_todo, { title, content }, Headers),
+    getTodoById: (id: string) =>
+      axios
+        .get(API_URLS.todo.get_todo_by_id(id), Headers)
+        .then((res) => res.data.data),
   },
 };
 

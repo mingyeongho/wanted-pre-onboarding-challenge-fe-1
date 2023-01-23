@@ -7,6 +7,7 @@ const Textarea = ({
   onChange,
   placeholder,
   value,
+  isDisabled,
 }: TextareaProps) => {
   return (
     <S.TetxareaContainer>
@@ -17,6 +18,7 @@ const Textarea = ({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        disabled={isDisabled}
       ></S.Textarea>
     </S.TetxareaContainer>
   );
