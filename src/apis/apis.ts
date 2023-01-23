@@ -26,6 +26,15 @@ const APIS = {
       axios
         .get(API_URLS.todo.get_todo_by_id(id), Headers)
         .then((res) => res.data.data),
+    updateTodo: ({
+      id,
+      title,
+      content,
+    }: {
+      id: string;
+      title: string;
+      content: string;
+    }) => axios.put(API_URLS.todo.update_todo(id), { title, content }, Headers),
   },
 };
 

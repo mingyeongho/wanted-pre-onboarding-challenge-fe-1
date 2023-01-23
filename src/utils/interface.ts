@@ -41,3 +41,7 @@ export interface TodoItemProps {
 export interface DetailTodoProps {
   currTodo: TodoType;
 }
+
+export interface UpdateTodoProps {
+  currTodo: TodoType;
+}

@@ -1,62 +1,62 @@
-import { useSearchParams } from "react-router-dom";
 import {
   ButtonProps,
-  DetailTodoProps,
   InputProps,
   TextareaProps,
+  UpdateTodoProps,
 } from "../../../utils/interface";
 import Button from "../../Reusable/Button/Button";
 import Input from "../../Reusable/Input/Input";
 import Textarea from "../../Reusable/Textarea/Textarea";
-import * as S from "./DetailTodo.style";
+import useUpdate from "./hooks/useUpdate";
+import * as S from "./UpdateTodo.style";
 
-const DetailTodo = ({ currTodo }: DetailTodoProps) => {
-  const { title, content, id, createdAt, updatedAt } = currTodo;
-  const setSearchParams = useSearchParams()[1];
+const UpdateTodo = ({ currTodo }: UpdateTodoProps) => {
+  const { inputs, onChange, onUpdate, onCancel } = useUpdate({ ...currTodo });
+  const { title, content } = inputs;
 
   const titleProps: InputProps = {
     type: "text",
     label: "Title",
     id: "title",
     value: title,
-    isDisabled: true,
+    onChange,
   };
 
   const contentProps: TextareaProps = {
     label: "Content",
     id: "content",
     value: content,
-    isDisabled: true,
+    onChange,
   };
 
   const updateBtnProps: ButtonProps = {
-    type: "button",
+    type: "submit",
     text: "수정",
-    callback: () => setSearchParams({ state: "update", id }),
+    callback: onUpdate,
   };
 
   const cancelBtnProps: ButtonProps = {
     type: "button",
     text: "취소",
-    callback: () => setSearchParams(),
+    callback: onCancel,
   };
 
   return (
-    <S.DetailTodo>
-      <S.DetailContainer>
+    <S.UpdateTodo>
+      <S.InputContainer>
         <S.TitleContainer>
           <Input {...titleProps} />
         </S.TitleContainer>
         <S.ContentContainer>
           <Textarea {...contentProps} />
         </S.ContentContainer>
-      </S.DetailContainer>
+      </S.InputContainer>
       <S.ButtonContainer>
         <Button {...updateBtnProps} />
         <Button {...cancelBtnProps} />
       </S.ButtonContainer>
-    </S.DetailTodo>
+    </S.UpdateTodo>
   );
 };
 
-export default DetailTodo;
+export default UpdateTodo;

@@ -1,14 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import APIS from "../../../apis/apis";
 import { API_URLS, TOKEN_KEY } from "../../../utils/constants";
 import token from "../../../utils/token";
 import { TodoType } from "../../../utils/type";
 import CreateTodo from "../CreateTodo/CreateTodo";
 import DefaultTodo from "../DefaultTodo/DefaultTodo";
 import DetailTodo from "../DetailTodo/DetailTodo";
+import UpdateTodo from "../UpdateTodo/UpdateTodo";
 import * as S from "./TodoDetail.style";
 
 const TodoDetail = () => {
@@ -28,7 +27,7 @@ const TodoDetail = () => {
             setCurrTodo(data.data);
           });
       })();
-  }, [id]);
+  }, [state, id]);
 
   const render = () => {
     switch (state) {
@@ -36,6 +35,8 @@ const TodoDetail = () => {
         return <CreateTodo />;
       case "detail":
         return currTodo && <DetailTodo currTodo={currTodo} />;
+      case "update":
+        return currTodo && <UpdateTodo currTodo={currTodo} />;
       default:
         return <DefaultTodo />;
     }
