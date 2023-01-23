@@ -1,34 +1,58 @@
-# 원티드 프리온보딩
+<h1 align='center'>원티드 프리온보딩 프론트엔드 사전과제</h1>
 
-### 개요
+## 📖:목차
 
-- 보다 나은 코드를 짜기 위한 공부
+<ol>
+    <li>
+        <a href='#overview'>Overview</a>
+    </li>
+    <li>
+        <a href='#run'>환경설정 및 실행</a>
+    </li>
+    <li>
+        <a href='#features'>요구사항</a>
+    </li>
+    <li>
+        <a href='#library'>라이브러리</a>
+    </li>
+    <li>
+        <a href='#structure'>폴더 구조</a>
+    </li>
+    <li>
+        <a href='#agonize'>고민한 부분</a>
+    </li>
+    <li>
+        <a href='#improve'>개선사항</a>
+    </li>
+    
+</ol>
 
----
 
-<details>
-    <summary>Stack & Goal</summary>
-    <p>
+<h2 id='overview'>Overview</h2>
+<video src='https://user-images.githubusercontent.com/57670160/214036194-ff9b92d6-5226-429a-b024-5f6a5653825d.mov'></video>
 
-- Objective Stack
+<h2 id='run'>환경설정 및 실행</h2>
 
-  - TS
-  - React-Query
-  - Styled-Components
+Backend
+<pre>
+    git clone https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api.git
+    
+    npm run start
+</pre>
 
-- Goal
+Frontend
+<pre>
+    git clone https://github.com/mingyeongho/wanted-pre-onboarding-challenge-fe-1.git
+    
+    루트 디렉토리에 .env 파일 생성
+    
+    .env 파일에 VITE_API_URL=http://localhost:8080 추가
+    
+    npm run dev
+</pre>
 
-  - 멋있는 UI, 사용자가 편리하게 사용할 수 있게끔
-  - 편리한 구조(너무 많지 않은 컴포넌트와 로직과 뷰의 분리)
-
-  </p>
-
-</details>
-<details>
-    <summary>
-        구현과제
-    </summary>
-    <p>
+<h2 id='features'>요구사항</h2>
+<p>
     Login / SignUp
 
 - /auth 경로에 로그인 / 회원가입 기능을 개발합니다
@@ -40,8 +64,8 @@
   - [x] 이메일과 비밀번호가 모두 입력되어 있고, 조건을 만족해야 제출 버튼이 활성화 되도록 해주세요
 - 로그인 API를 호출하고, 올바른 응답을 받았을 때 루트 경로로 이동시켜주세요
   - [x] 응답으로 받은 토큰은 로컬 스토리지에 저장해주세요
-  - [x] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트 시켜주세요
-  - [x] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트 시켜주세요
+  - [ ] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트 시켜주세요
+  - [ ] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트 시켜주세요
 
 Todo List
 
@@ -60,80 +84,108 @@ Todo List
 
     </p>
 
-    </details>
 
-<details>
-    <summary>First Preview</summary>
-    <p>
+<h2 id='library'>라이브러리</h2>
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/57670160/214060689-7d56173f-19fe-4eae-b1c5-9462ec682831.png">
 
-Auth
+<h2 id='structure'>폴더 구조</h2>
+<pre>
+src
+├── App.tsx
+├── apis
+│   └── apis.ts
+├── components
+│   ├── Auth
+│   │   ├── Auth.tsx
+│   │   ├── hooks
+│   │   │   └── useAuth.ts
+│   │   ├── props.ts
+│   │   └── style.ts
+│   ├── Header
+│   │   ├── Header.tsx
+│   │   └── style.ts
+│   ├── Reusable
+│   │   ├── Button
+│   │   │   ├── Button.tsx
+│   │   │   └── style.ts
+│   │   ├── Input
+│   │   │   ├── Input.tsx
+│   │   │   └── style.ts
+│   │   ├── Separate
+│   │   │   └── Separate.tsx
+│   │   ├── ShadowBox
+│   │   │   ├── ShadowBox.tsx
+│   │   │   └── style.ts
+│   │   └── Textarea
+│   │       ├── Textarea.style.tsx
+│   │       └── Textarea.tsx
+│   ├── Signup
+│   │   ├── Signup.tsx
+│   │   ├── hooks
+│   │   │   └── useSignup.ts
+│   │   ├── props.ts
+│   │   └── style.ts
+│   └── Todo
+│       ├── CreateTodo
+│       │   ├── CreateTodo.style.tsx
+│       │   ├── CreateTodo.tsx
+│       │   └── hooks
+│       │       └── useCreate.ts
+│       ├── DefaultTodo
+│       │   ├── DefaultTodo.style.tsx
+│       │   └── DefaultTodo.tsx
+│       ├── DetailTodo
+│       │   ├── DetailTodo.style.tsx
+│       │   ├── DetailTodo.tsx
+│       │   └── hooks
+│       │       └── useFetchTodoItem.ts
+│       ├── Todo.style.tsx
+│       ├── Todo.tsx
+│       ├── TodoDetail
+│       │   ├── TodoDetail.style.tsx
+│       │   └── TodoDetail.tsx
+│       ├── TodoItem
+│       │   ├── TodoItem.style.tsx
+│       │   ├── TodoItem.tsx
+│       │   └── hooks
+│       │       └── useRemove.ts
+│       ├── TodoList
+│       │   ├── TodoList.style.tsx
+│       │   ├── TodoList.tsx
+│       │   └── hooks
+│       │       └── useFetchTodoList.ts
+│       ├── TodoListContainer
+│       │   ├── TodoListContainer.style.tsx
+│       │   └── TodoListContainer.tsx
+│       └── UpdateTodo
+│           ├── UpdateTodo.style.tsx
+│           ├── UpdateTodo.tsx
+│           └── hooks
+│               └── useUpdate.ts
+├── main.tsx
+├── pages
+│   ├── AuthPage.tsx
+│   ├── Home.tsx
+│   └── SignupPage.tsx
+├── router
+│   └── Router.tsx
+├── styles
+│   ├── GlobalStyle.ts
+│   └── Palette.ts
+├── utils
+│   ├── constants.ts
+│   ├── function
+│   │   ├── isEmailValid.ts
+│   │   ├── isPasswordValid.ts
+│   │   ├── isValid.ts
+│   │   └── timeDiff.ts
+│   ├── interface.ts
+│   ├── token.ts
+│   └── type.ts
+└── vite-env.d.ts</pre>
 
-- ![Auth](https://user-images.githubusercontent.com/57670160/212594831-9d114bd3-6afd-413b-8803-8fcfe0536928.gif)
+<h2 id='agonize'>고민한 부분</h2>
+a
 
-Todo
-
-- ![Todo](https://user-images.githubusercontent.com/57670160/212594975-8b4e530d-41fc-4c58-a35e-8c7d12d10275.gif)
-
-Logout
-
-- ![Logout](https://user-images.githubusercontent.com/57670160/212595076-4cd7a378-5029-4afa-b4e0-1ce58298a7f2.gif)
-
-  </p>
-</details>
-<details>
-    <summary>First Refactoring</summary>
-    <p>
-
-1.  Validation에서 정규표현식의 사용
-
-- Befor: <img width="558" alt="image" src="https://user-images.githubusercontent.com/57670160/212604258-0e819e87-3015-4c8c-a720-a516b876154f.png">
-- After: <img width="511" alt="image" src="https://user-images.githubusercontent.com/57670160/212604387-baedfe51-d7ed-45ce-a621-26107a760e4c.png">
-
-2.  선언형 프로그래밍의 사용
-
-- 내가 무엇을 할지는 드러내고 어떻게 할지는 감추는 방법.
-- 같은 목적 or 비슷한 목적을 갖는 코드는 모아두자.
-  - 일단 모두 모아두는 것이 아니라 당장 몰라도 되는 디테일만 모아두자.
-- 함수는 하나의 일만 한다. (단일 책임)
-- 필요한 부분만 노출하자.
-
-</p>
-</details>
-<details>
-    <summary>Second Refactoring</summary>
-    <p>
-    
-React-query 도입
-    
-  </p>
-</details>
-<details>
-    <summary>실행방법</summary>
-    <p>
-    
-Backend
-
-```
-> https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api.git을 클론
-
-yarn
-
-yarn start
-
-```
-
-Frontend
-
-```
-
-> root directory에 .env 파일을 만들고 VITE_API_URL=http://localhost:8080을 적어둔다.
-
-npm i
-
-npm run dev
-
-```
-
-</p>
-
-</details>
+<h2 id='improve'>개선사항</h2>
+a
